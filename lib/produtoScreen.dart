@@ -99,7 +99,7 @@ class _ProdutoScreenState extends State<ProdutoScreen> {
                                 ),
                                 image: DecorationImage(
                                   image: FileImage(File(produto.imagem)),
-                                  fit: BoxFit.contain,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             )
