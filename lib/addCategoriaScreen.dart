@@ -90,145 +90,147 @@ class _AddCategoriaScreenState extends State<AddCategoriaScreen> {
   Widget build(BuildContext context) {
     FocusNode myFocusNode = new FocusNode();
 
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 227, 227, 227),
-      appBar: AppBar(
+    return LayoutBuilder(builder: ((context, constraints) {
+      return Scaffold(
         backgroundColor: const Color.fromARGB(255, 227, 227, 227),
-        centerTitle: true,
-        title: const Text('Nova Categoria'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            children: <Widget>[
-              const SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                controller: _nomeController,
-                decoration: const InputDecoration(
-                  labelText: 'Nome',
-                  floatingLabelStyle: TextStyle(
-                    color: Color.fromARGB(255, 94, 196, 1),
-                  ),
-                  border: OutlineInputBorder(),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 227, 227, 227),
+          centerTitle: true,
+          title: const Text('Nova Categoria'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Form(
+            key: _formKey,
+            child: ListView(
+              children: <Widget>[
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  controller: _nomeController,
+                  decoration: const InputDecoration(
+                    labelText: 'Nome',
+                    floatingLabelStyle: TextStyle(
                       color: Color.fromARGB(255, 94, 196, 1),
                     ),
+                    border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 94, 196, 1),
+                      ),
+                    ),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor, insira o nome';
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o nome';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                controller: _descricaoController,
-                decoration: const InputDecoration(
-                  labelText: 'Descrição',
-                  floatingLabelStyle: TextStyle(
-                    color: Color.fromARGB(255, 94, 196, 1),
-                  ),
-                  border: OutlineInputBorder(),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  controller: _descricaoController,
+                  decoration: const InputDecoration(
+                    labelText: 'Descrição',
+                    floatingLabelStyle: TextStyle(
                       color: Color.fromARGB(255, 94, 196, 1),
                     ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16.0),
-              _image == null
-                  ? SizedBox(
-                      width: 300,
-                      height: 200,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            Colors.transparent,
-                          ),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              side: const BorderSide(color: Colors.grey),
-                            ),
-                          ),
-                        ),
-                        onPressed: _pickImage,
-                        child: const Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.add_a_photo_outlined,
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              size: 40,
-                            ),
-                            Text(
-                              "Upload Images here",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 253, 253, 253)),
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  : Container(
-                      width: double.infinity,
-                      height: 200,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        border: Border.all(color: Colors.grey),
-                        image: DecorationImage(
-                          image: FileImage(_image!),
-                          fit: BoxFit.cover,
-                        ),
+                    border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 94, 196, 1),
                       ),
                     ),
-              const SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: _saveCategoria,
-                style: const ButtonStyle(
-                  shape: MaterialStatePropertyAll(
-                    ContinuousRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                  ),
-                  backgroundColor: MaterialStatePropertyAll(
-                    Color.fromARGB(255, 94, 196, 1),
                   ),
                 ),
-                child: const Stack(children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Icon(
-                        color: Colors.white,
-                        Icons.shopping_bag_outlined,
-                        size: 20,
+                const SizedBox(height: 16.0),
+                _image == null
+                    ? SizedBox(
+                        width: 300,
+                        height: 200,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              Colors.transparent,
+                            ),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                side: const BorderSide(color: Colors.grey),
+                              ),
+                            ),
+                          ),
+                          onPressed: _pickImage,
+                          child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.add_a_photo_outlined,
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                size: 40,
+                              ),
+                              Text(
+                                "Upload Images here",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 253, 253, 253)),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    : Container(
+                        width: double.infinity,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(color: Colors.grey),
+                          image: DecorationImage(
+                            image: FileImage(_image!),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
-                    ],
+                const SizedBox(height: 16.0),
+                ElevatedButton(
+                  onPressed: _saveCategoria,
+                  style: const ButtonStyle(
+                    shape: MaterialStatePropertyAll(
+                      ContinuousRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                      ),
+                    ),
+                    backgroundColor: MaterialStatePropertyAll(
+                      Color.fromARGB(255, 94, 196, 1),
+                    ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Salvar', style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                ]),
-              ),
-            ],
+                  child: const Stack(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Icon(
+                          color: Colors.white,
+                          Icons.shopping_bag_outlined,
+                          size: 20,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Salvar', style: TextStyle(color: Colors.white)),
+                      ],
+                    ),
+                  ]),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }));
   }
 }

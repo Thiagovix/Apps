@@ -36,8 +36,7 @@ class _CameraGalleryScreenState extends State<CameraGalleryScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Imagem Salva na Galeria'),
-              backgroundColor:                     Color.fromARGB(255, 94, 196, 1),
-
+              backgroundColor: Color.fromARGB(255, 94, 196, 1),
             ),
           );
         }
@@ -55,25 +54,29 @@ class _CameraGalleryScreenState extends State<CameraGalleryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 227, 227, 227),
-      appBar: AppBar(
+    return LayoutBuilder(builder: ((context, constraints) {
+      return Scaffold(
         backgroundColor: const Color.fromARGB(255, 227, 227, 227),
-        centerTitle: true,
-        title: const Text('Nova Foto de Produto'),
-      ),
-      body: Center(
-        child: _image == null ? const Text('No image taken.') : Image.file(_image!),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromARGB(255, 94, 196, 1),
-        onPressed: _takePicture,
-        tooltip: 'Pegar Imagem',
-        child: const Icon(
-          Icons.camera,
-          color: Colors.white,
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 227, 227, 227),
+          centerTitle: true,
+          title: const Text('Nova Foto de Produto'),
         ),
-      ),
-    );
+        body: Center(
+          child: _image == null
+              ? const Text('No image taken.')
+              : Image.file(_image!),
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: const Color.fromARGB(255, 94, 196, 1),
+          onPressed: _takePicture,
+          tooltip: 'Pegar Imagem',
+          child: const Icon(
+            Icons.camera,
+            color: Colors.white,
+          ),
+        ),
+      );
+    }));
   }
 }

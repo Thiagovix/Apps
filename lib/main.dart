@@ -102,9 +102,10 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-    @override
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return LayoutBuilder(builder: ((context, constraints) {
+      return Scaffold(
       backgroundColor: const Color.fromARGB(255, 227, 227, 227),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: ClipRRect(
@@ -195,5 +196,6 @@ class _MainScreenState extends State<MainScreen> {
         ),
       ),
     );
+    }));
   }
 }

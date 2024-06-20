@@ -97,7 +97,8 @@ class _SacolaScreenState extends State<SacolaScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return LayoutBuilder(builder: ((context, constraints) {
+      return Scaffold(
       backgroundColor: const Color.fromARGB(255, 227, 227, 227),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 227, 227, 227),
@@ -194,5 +195,6 @@ class _SacolaScreenState extends State<SacolaScreen> {
             )
           : null, // Mostra o botão apenas se a sacola não estiver vazia
     );
+    }));
   }
 }
