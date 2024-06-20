@@ -88,7 +88,7 @@ class _ProdutoScreenState extends State<ProdutoScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     SizedBox(
-                      height: 100,
+                      height: 110,
                       child: produto.imagem.isNotEmpty
                           ? Container(
                               height: 120,
